@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Apple Kid";
+  src:
+    url("@fonts/Apple-Kid.woff") format("woff"),
+    url("@fonts/Apple-Kid.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
