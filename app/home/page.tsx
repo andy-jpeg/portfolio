@@ -1,9 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const walkingSprite = "/themes/father3/andy/walking.gif";
+const poseSprite = "/themes/father3/andy/pose.png";
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
+  const [imagesReady, setImagesReady] = useState(false);
+
+  useEffect(() => {
+    let isCancelled = false;
+
+    const preloadImage = (src: string) =>
+      new Promise<void>((resolve) => {
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+      });
+
+    Promise.all([preloadImage(walkingSprite), preloadImage(poseSprite)]).then(
+      () => {
+        if (!isCancelled) {
+          setImagesReady(true);
+        }
+      },
+    );
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  const currentSprite = isHovered ? poseSprite : walkingSprite;
 
   return (
     <main
@@ -25,11 +55,12 @@ export default function HomePage() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{
-            backgroundImage: `url('/themes/father3/andy/${isHovered ? "pose.png" : "walking.gif"}')`,
+            backgroundImage: `url('${currentSprite}')`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "contain",
             backgroundColor: "transparent",
+            opacity: imagesReady ? 1 : 0.01,
           }}
         />
       </div>
