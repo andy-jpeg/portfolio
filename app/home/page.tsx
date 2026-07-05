@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const walkingSprite = "/themes/father3/andy/walking.gif";
 const poseSprite = "/themes/father3/andy/pose.png";
@@ -51,18 +52,20 @@ export default function HomePage() {
         </h1>
 
         <div
-          className="h-64 w-64 cursor-pointer rounded-2xl border border-zinc-300/0 shadow-none"
+          className="h-64 w-64 cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          style={{
-            backgroundImage: `url('${currentSprite}')`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            backgroundColor: "transparent",
-            opacity: imagesReady ? 1 : 0.01,
-          }}
-        />
+        >
+          <Image
+            src={currentSprite}
+            alt="Andy sprite"
+            width={256}
+            height={256}
+            className="h-full w-full object-contain"
+            draggable={false}
+            style={{ opacity: imagesReady ? 1 : 0.01 }}
+          />
+        </div>
       </div>
     </main>
   );
