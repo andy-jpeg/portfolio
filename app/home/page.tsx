@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Father3Textbox from "@components/father3/Father3Textbox";
 
 const walkingSprite = "/themes/father3/andy/walking.gif";
 const poseSprite = "/themes/father3/andy/pose.png";
@@ -52,6 +53,13 @@ export default function HomePage() {
         <h1 className="text-center text-6xl sm:text-7xl lg:text-8xl">
           Your Name, Please!
         </h1>
+
+        <Father3Textbox width="min(92vw, 20rem)" minHeight={110}>
+          <div className="space-y-3 text-center text-xl leading-relaxed">
+            <p>Welcome to the Father 3 theme.</p>
+            <p>This box is built from all 9 slices and can hold text.</p>
+          </div>
+        </Father3Textbox>
 
         <div
           className="h-64 w-64 cursor-pointer"

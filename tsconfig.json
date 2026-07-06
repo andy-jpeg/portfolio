@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["./*"],
       "@fonts/*": ["./public/fonts/*"],
-      "@themes/*": ["./public/themes/*"]
+      "@themes/*": ["./public/themes/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": [
