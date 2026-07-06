@@ -23,20 +23,22 @@ export default function Father3Textbox({
   const containerStyle: CSSProperties = {
     width,
     minHeight,
+    height: style?.height ?? "auto",
     ...style,
   };
 
   return (
     <div
-      className={["relative isolate", className].filter(Boolean).join(" ")}
+      className={["relative", className].filter(Boolean).join(" ")}
       style={containerStyle}
     >
       <div
         className="pointer-events-none absolute inset-0 grid"
         style={{
-          gridTemplateColumns:
-            "clamp(48px, 8vw, 80px) 1fr clamp(48px, 8vw, 80px)",
-          gridTemplateRows: "clamp(48px, 8vw, 80px) 1fr clamp(48px, 8vw, 80px)",
+          gridTemplateColumns: "100px 1fr 100px",
+          gridTemplateRows: "36px 1fr 36px",
+          width: "100%",
+          height: "100%",
         }}
       >
         <Image
@@ -59,6 +61,7 @@ export default function Father3Textbox({
           width={80}
           height={80}
           className="block h-full w-full"
+          style={{ transform: "translateY(0.35px)" }}
         />
         <Image
           src={`${SLICE_BASE_PATH}/middle_left.png`}
@@ -80,6 +83,7 @@ export default function Father3Textbox({
           width={80}
           height={80}
           className="block h-full w-full"
+          style={{ transform: "translateY(0.35px)" }}
         />
         <Image
           src={`${SLICE_BASE_PATH}/bottom_left.png`}
@@ -101,6 +105,7 @@ export default function Father3Textbox({
           width={80}
           height={80}
           className="block h-full w-full"
+          style={{ transform: "translateY(0.35px)" }}
         />
       </div>
 
@@ -108,7 +113,7 @@ export default function Father3Textbox({
         className="relative z-10 flex h-full w-full items-start justify-start overflow-auto"
         style={{ padding }}
       >
-        <div className="w-full">{children}</div>
+        <div className="w-full text-white">{children}</div>
       </div>
     </div>
   );

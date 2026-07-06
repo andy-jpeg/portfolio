@@ -49,15 +49,15 @@ export default function HomePage() {
         fontFamily: "Apple Kid, sans-serif",
       }}
     >
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center gap-8 px-6 py-12 sm:px-8 lg:px-12">
+      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-6 py-12 sm:px-8 lg:px-12">
         <h1 className="text-center text-6xl sm:text-7xl lg:text-8xl">
           Your Name, Please!
         </h1>
 
-        <Father3Textbox width="min(92vw, 20rem)" minHeight={110}>
-          <div className="space-y-3 text-center text-xl leading-relaxed">
-            <p>Welcome to the Father 3 theme.</p>
-            <p>This box is built from all 9 slices and can hold text.</p>
+        <Father3Textbox width="40rem" minHeight={"auto"}>
+          <div className="text-center text-xl leading-relaxed">
+            <p>hi, im andy!</p>
+            <p>student @ univ of fl</p>
           </div>
         </Father3Textbox>
 
@@ -68,7 +68,7 @@ export default function HomePage() {
         >
           <Image
             src={currentSprite}
-            alt="Andy sprite"
+            alt="Andy's Sprite"
             width={256}
             height={256}
             className="h-full w-full object-contain"
