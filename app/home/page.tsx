@@ -3,38 +3,20 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Textbox from "@/components/father3/Textbox";
+import walkingSprite from "@themes/father3/andy/side-walking.gif";
+import idleSprite from "@themes/father3/andy/walking.gif";
+import poseSprite from "@themes/father3/andy/pose.png";
 
-const walkingSprite = "/themes/father3/andy/side-walking.gif";
-const idleSprite = "/themes/father3/andy/walking.gif";
-const poseSprite = "/themes/father3/andy/pose.png";
 const entryDuration = 2500;
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
-  const [imagesReady, setImagesReady] = useState(false);
+  // const [imagesReady, setImagesReady] = useState(false);
   const [isEntryComplete, setIsEntryComplete] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     let isCancelled = false;
-
-    const preloadImage = (src: string) =>
-      new Promise<void>((resolve) => {
-        const img = new window.Image();
-        img.src = src;
-        img.onload = () => resolve();
-        img.onerror = () => resolve();
-      });
-
-    Promise.all([
-      preloadImage(walkingSprite),
-      preloadImage(idleSprite),
-      preloadImage(poseSprite),
-    ]).then(() => {
-      if (!isCancelled) {
-        setImagesReady(true);
-      }
-    });
 
     window.setTimeout(() => {
       if (!isCancelled) {
@@ -106,7 +88,6 @@ export default function HomePage() {
                 height={256}
                 className="relative h-full w-full object-contain"
                 draggable={false}
-                style={{ opacity: imagesReady ? 1 : 0.01 }}
               />
             </div>
           </div>
