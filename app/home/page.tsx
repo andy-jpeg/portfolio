@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Father3Textbox from "@components/father3/Father3Textbox";
+import Textbox from "@/components/father3/Textbox";
 
 const walkingSprite = "/themes/father3/andy/walking.gif";
 const poseSprite = "/themes/father3/andy/pose.png";
@@ -51,7 +51,7 @@ export default function HomePage() {
     >
       <div
         className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center px-6 py-12 sm:px-8 lg:px-12"
-        style={{ gap: "9rem" }}
+        style={{ gap: "4rem" }}
       >
         <div className="flex flex-row gap-8">
           <div
@@ -70,7 +70,7 @@ export default function HomePage() {
             />
           </div>
 
-          <Father3Textbox
+          <Textbox
             width="40rem"
             minHeight={100}
             lineHeight={1.2}
@@ -80,22 +80,17 @@ export default function HomePage() {
               <p>What is this boy&apos;s name?</p>
               <p>Andy</p>
             </div>
-          </Father3Textbox>
+          </Textbox>
         </div>
 
-        <Father3Textbox
-          width="40rem"
-          minHeight={300}
-          lineHeight={1.2}
-          fontSize="4rem"
-        >
+        <Textbox width="40rem" minHeight={300} lineHeight={1.2} fontSize="4rem">
           <div>
             <p>
-              student @ univ of fl majoring in computer science & minoring in
-              game design
+              second-year student @ univ of fl majoring in computer science &
+              minoring in game design!!!
             </p>
           </div>
-        </Father3Textbox>
+        </Textbox>
       </div>
     </main>
   );
