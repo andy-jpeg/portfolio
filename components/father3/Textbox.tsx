@@ -19,7 +19,7 @@ export default function Father3Textbox({
   children,
   className = "",
   style,
-  width = 50,
+  width = "100%",
   minHeight = DEFAULT_HEIGHT,
   fontSize = "clamp(0.9rem, 2vw, 1.25rem)",
   lineHeight = 1.5,
@@ -40,6 +40,8 @@ export default function Father3Textbox({
     width,
     minHeight,
     height: style?.height ?? `${resolvedHeight}px`,
+    flexShrink: 0,
+    display: "block",
     ...style,
   };
 

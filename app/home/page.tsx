@@ -11,7 +11,6 @@ const entryDuration = 2500;
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
-  // const [imagesReady, setImagesReady] = useState(false);
   const [isEntryComplete, setIsEntryComplete] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -41,6 +40,7 @@ export default function HomePage() {
     : isEntryComplete
       ? idleSprite
       : walkingSprite;
+
   const spriteOffset = isHovered
     ? "0px"
     : isEntryComplete
@@ -62,10 +62,10 @@ export default function HomePage() {
       }}
     >
       <div
-        className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center px-6 py-12 sm:px-8 lg:px-12"
+        className="mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center py-12"
         style={{ gap: "4rem" }}
       >
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-row">
           <div
             className="relative h-64 w-64 cursor-pointer"
             onMouseEnter={() => setIsHovered(true)}
@@ -84,9 +84,9 @@ export default function HomePage() {
               <Image
                 src={currentSprite}
                 alt="Andy's Earthbound Sprite"
-                width={256}
-                height={256}
-                className="relative h-full w-full object-contain"
+                width={255}
+                height={255}
+                className="relative w-full h-full object-contain"
                 draggable={false}
               />
             </div>
@@ -105,11 +105,11 @@ export default function HomePage() {
           </Textbox>
         </div>
 
-        <Textbox width="40rem" minHeight={300} lineHeight={1.2} fontSize="4rem">
+        <Textbox minHeight={100} lineHeight={1.2} fontSize="4rem">
           <div>
             <p>
               second-year student @ univ of fl majoring in computer science &
-              minoring in game design!!!
+              minoring in game design!
             </p>
           </div>
         </Textbox>
