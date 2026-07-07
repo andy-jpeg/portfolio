@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Textbox from "@/components/father3/Textbox";
 
-const walkingSprite = "/themes/father3/andy/walking.gif";
+const walkingSprite = "/themes/father3/andy/side-walking.gif";
+const idleSprite = "/themes/father3/andy/walking.gif";
 const poseSprite = "/themes/father3/andy/pose.png";
+const entryDuration = 2500;
 
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
   const [imagesReady, setImagesReady] = useState(false);
+  const [isEntryComplete, setIsEntryComplete] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     let isCancelled = false;
@@ -22,20 +26,46 @@ export default function HomePage() {
         img.onerror = () => resolve();
       });
 
-    Promise.all([preloadImage(walkingSprite), preloadImage(poseSprite)]).then(
-      () => {
-        if (!isCancelled) {
-          setImagesReady(true);
-        }
-      },
-    );
+    Promise.all([
+      preloadImage(walkingSprite),
+      preloadImage(idleSprite),
+      preloadImage(poseSprite),
+    ]).then(() => {
+      if (!isCancelled) {
+        setImagesReady(true);
+      }
+    });
+
+    window.setTimeout(() => {
+      if (!isCancelled) {
+        setHasMounted(true);
+      }
+    }, 0);
+
+    const entryTimer = window.setTimeout(() => {
+      if (!isCancelled) {
+        setIsEntryComplete(true);
+      }
+    }, entryDuration);
 
     return () => {
       isCancelled = true;
+      window.clearTimeout(entryTimer);
     };
   }, []);
 
-  const currentSprite = isHovered ? poseSprite : walkingSprite;
+  const currentSprite = isHovered
+    ? poseSprite
+    : isEntryComplete
+      ? idleSprite
+      : walkingSprite;
+  const spriteOffset = isHovered
+    ? "0px"
+    : isEntryComplete
+      ? "0px"
+      : hasMounted
+        ? "0px"
+        : "35vw";
 
   return (
     <main
@@ -55,19 +85,30 @@ export default function HomePage() {
       >
         <div className="flex flex-row gap-8">
           <div
-            className="h-64 w-64 cursor-pointer"
+            className="relative h-64 w-64 cursor-pointer"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <Image
-              src={currentSprite}
-              alt="Andy's Earthbound Sprite"
-              width={256}
-              height={256}
-              className="relative h-full w-full object-contain"
-              draggable={false}
-              style={{ opacity: imagesReady ? 1 : 0.01 }}
-            />
+            <div
+              className="absolute inset-y-0 transition-all ease-linear"
+              style={{
+                left: spriteOffset,
+                transitionDuration:
+                  hasMounted && !isEntryComplete ? `${entryDuration}ms` : "0ms",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <Image
+                src={currentSprite}
+                alt="Andy's Earthbound Sprite"
+                width={256}
+                height={256}
+                className="relative h-full w-full object-contain"
+                draggable={false}
+                style={{ opacity: imagesReady ? 1 : 0.01 }}
+              />
+            </div>
           </div>
 
           <Textbox

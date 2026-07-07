@@ -77,7 +77,7 @@ export default function Father3Textbox({
           width={240}
           height={96}
           className="block h-full w-full"
-          style={{ transform: "translateY(0.35px)" }}
+          style={{ transform: "translateY(1px)" }}
         />
         <Image
           src={`${SLICE_BASE_PATH}/middle_left.png`}
@@ -99,7 +99,7 @@ export default function Father3Textbox({
           width={240}
           height={sliceHeight}
           className="block h-full w-full"
-          style={{ transform: "translateY(0.35px)" }}
+          style={{ transform: "translateY(1px)" }}
         />
         <Image
           src={`${SLICE_BASE_PATH}/bottom_left.png`}
@@ -121,7 +121,7 @@ export default function Father3Textbox({
           width={240}
           height={96}
           className="block h-full w-full"
-          style={{ transform: "translateY(0.35px)" }}
+          style={{ transform: "translateY(1px)" }}
         />
       </div>
 
