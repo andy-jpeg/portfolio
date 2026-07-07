@@ -39,7 +39,7 @@ export default function HomePage() {
 
   return (
     <main
-      className="min-h-screen text-zinc-900"
+      className="min-h-screen text-zinc-900 bg-transparent"
       style={{
         backgroundImage: "url('/themes/father3/background.png')",
         backgroundRepeat: "repeat",
@@ -49,33 +49,53 @@ export default function HomePage() {
         fontFamily: "Apple Kid, sans-serif",
       }}
     >
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-6 py-12 sm:px-8 lg:px-12">
-        <h1 className="text-center text-6xl sm:text-7xl lg:text-8xl">
-          Your Name, Please!
-        </h1>
+      <div
+        className="mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center px-6 py-12 sm:px-8 lg:px-12"
+        style={{ gap: "9rem" }}
+      >
+        <div className="flex flex-row gap-8">
+          <div
+            className="h-64 w-64 cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <Image
+              src={currentSprite}
+              alt="Andy's Earthbound Sprite"
+              width={256}
+              height={256}
+              className="relative h-full w-full object-contain"
+              draggable={false}
+              style={{ opacity: imagesReady ? 1 : 0.01 }}
+            />
+          </div>
 
-        <Father3Textbox width="40rem" minHeight={"auto"}>
-          <div className="text-center text-xl leading-relaxed">
-            <p>hi, im andy!</p>
-            <p>student @ univ of fl</p>
+          <Father3Textbox
+            width="40rem"
+            minHeight={100}
+            lineHeight={1.2}
+            fontSize="4rem"
+          >
+            <div>
+              <p>What is this boy&apos;s name?</p>
+              <p>Andy</p>
+            </div>
+          </Father3Textbox>
+        </div>
+
+        <Father3Textbox
+          width="40rem"
+          minHeight={300}
+          lineHeight={1.2}
+          fontSize="4rem"
+        >
+          <div>
+            <p>
+              student @ univ of fl majoring in computer science & minoring in
+              game design
+            </p>
           </div>
         </Father3Textbox>
-
-        <div
-          className="h-64 w-64 cursor-pointer"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <Image
-            src={currentSprite}
-            alt="Andy's Sprite"
-            width={256}
-            height={256}
-            className="h-full w-full object-contain"
-            draggable={false}
-            style={{ opacity: imagesReady ? 1 : 0.01 }}
-          />
-        </div>
       </div>
     </main>
   );
