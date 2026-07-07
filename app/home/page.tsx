@@ -13,6 +13,7 @@ export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
   const [isEntryComplete, setIsEntryComplete] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const [typedLength, setTypedLength] = useState(0);
 
   useEffect(() => {
     let isCancelled = false;
@@ -35,6 +36,30 @@ export default function HomePage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isEntryComplete) {
+      return;
+    }
+
+    setTypedLength(0);
+
+    const text = "andy.jpeg";
+    const typingInterval = window.setInterval(() => {
+      setTypedLength((currentLength) => {
+        if (currentLength >= text.length) {
+          window.clearInterval(typingInterval);
+          return currentLength;
+        }
+
+        return currentLength + 1;
+      });
+    }, 140);
+
+    return () => {
+      window.clearInterval(typingInterval);
+    };
+  }, [isEntryComplete]);
+
   const currentSprite = isHovered
     ? poseSprite
     : isEntryComplete
@@ -47,7 +72,13 @@ export default function HomePage() {
       ? "0px"
       : hasMounted
         ? "0px"
-        : "35vw";
+        : "400px";
+  const typedText = "andy.jpeg";
+  const typedDisplay =
+    typedText.slice(0, typedLength) +
+    (typedLength < typedText.length ? "|" : "") +
+    "_".repeat(Math.max(typedText.length - typedLength - 1, 0));
+  const caretIndex = typedDisplay.indexOf("|");
 
   return (
     <main
@@ -55,7 +86,7 @@ export default function HomePage() {
       style={{
         backgroundImage: "url('/themes/father3/background.png')",
         backgroundRepeat: "repeat",
-        backgroundSize: "80px 80px",
+        backgroundSize: "100px 100px",
         backgroundAttachment: "fixed",
         backgroundColor: "transparent",
         fontFamily: "Apple Kid, sans-serif",
@@ -100,7 +131,17 @@ export default function HomePage() {
           >
             <div>
               <p>What is this boy&apos;s name?</p>
-              <p>Andy</p>
+              <p>
+                {caretIndex === -1 ? (
+                  typedDisplay
+                ) : (
+                  <>
+                    {typedDisplay.slice(0, caretIndex)}
+                    <span className="caret">|</span>
+                    {typedDisplay.slice(caretIndex + 1)}
+                  </>
+                )}
+              </p>
             </div>
           </Textbox>
         </div>
