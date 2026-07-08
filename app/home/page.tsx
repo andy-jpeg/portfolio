@@ -63,7 +63,7 @@ export default function HomePage() {
 
         return currentLength + 1;
       });
-    }, 140);
+    }, 250);
 
     return () => {
       window.clearInterval(typingInterval);
@@ -179,13 +179,13 @@ export default function HomePage() {
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
               <div className="justify-self-start">
                 <p
-                  className="absolute text-3xl top-1 bg-[#101010] m-0"
+                  className="absolute text-3xl top-1 bg-[#101010]"
                   style={{ fontFamily: '"Earthbound Beginnings", sans-serif' }}
                 >
                   Andy
                 </p>
-                <p className="m-0">Level:&emsp;19/??</p>
-                <div className="flex flex-row items-center mt-0">
+                <p>Level:&emsp;19/??</p>
+                <div className="flex flex-row items-center">
                   <Image
                     src="/themes/father3/andy/status.png"
                     alt="Andy status icon"
@@ -194,7 +194,7 @@ export default function HomePage() {
                     className="object-contain mr-4"
                     unoptimized
                   />
-                  <p className="m-0">SWE & Game Developer</p>
+                  <p>SWE & Game Developer</p>
                 </div>
               </div>
 
