@@ -107,7 +107,7 @@ export default function HomePage() {
         backgroundRepeat: "repeat",
         backgroundSize: "100px 100px",
         backgroundAttachment: "fixed",
-        backgroundColor: "#98d99a",
+        backgroundColor: "transparent",
         fontFamily: "Apple Kid, sans-serif",
       }}
     >
