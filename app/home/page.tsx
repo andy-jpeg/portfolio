@@ -116,8 +116,14 @@ export default function HomePage() {
       >
         <div className="flex flex-row">
           <div
-            className="relative h-64 w-64 cursor-pointer"
-            onMouseEnter={() => setIsHovered(true)}
+            className={`relative h-64 w-64 ${
+              isEntryComplete ? "cursor-pointer" : "cursor-default"
+            }`}
+            onMouseEnter={() => {
+              if (isEntryComplete) {
+                setIsHovered(true);
+              }
+            }}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div
