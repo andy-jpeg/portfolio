@@ -241,7 +241,7 @@ export default function HomePage() {
                           <p>PSI Gaming</p>
                           <button
                             type="button"
-                            className="cursor-[url('/themes/father3/textbox/select.gif'),_pointer]"
+                            className="cursor-[url('/themes/father3/textbox/select.gif'),pointer]"
                             onMouseEnter={() => setHoveredPsiMove("PSI Gaming")}
                             onFocus={() => setHoveredPsiMove("PSI Gaming")}
                             onMouseLeave={() => setHoveredPsiMove(null)}
@@ -341,7 +341,7 @@ export default function HomePage() {
               Press the{" "}
               <button
                 type="button"
-                className="cursor-[url('/themes/father3/textbox/select.gif'),_pointer] underline underline-offset-4"
+                className="cursor-[url('/themes/father3/textbox/select.gif'),pointer] underline underline-offset-4"
                 onClick={() => {
                   setHoveredPsiMove(null);
                   setIsPsiInfoOpen((current) => !current);
@@ -383,8 +383,8 @@ export default function HomePage() {
                 This year, I am working on a game called &apos;spacebup!,&apos;
                 a Earthbound-inspired JRPG about a little space buddy traveling
                 across the galaxy to fight for moral justice and saving worlds
-                who can&apos;t save themselves. Above is a picture of my space
-                buddy!!
+                who might not be able to save themselves. Above is a picture of my space
+                buddy!
               </p>
             </div>
           </Textbox>
