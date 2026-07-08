@@ -241,18 +241,32 @@ export default function HomePage() {
                           <p>PSI Gaming</p>
                           <button
                             type="button"
+                            className="cursor-[url('/themes/father3/textbox/select.gif'),_pointer]"
                             onMouseEnter={() => setHoveredPsiMove("PSI Gaming")}
                             onFocus={() => setHoveredPsiMove("PSI Gaming")}
                             onMouseLeave={() => setHoveredPsiMove(null)}
                             onBlur={() => setHoveredPsiMove(null)}
                           >
-                            a
+                            <span className="inline-flex items-center gap-2">
+                              {hoveredPsiMove === "PSI Gaming" ? (
+                                <Image
+                                  src="/themes/father3/textbox/select.gif"
+                                  alt=""
+                                  width={24}
+                                  height={24}
+                                  className="h-6 w-6 object-contain"
+                                  unoptimized
+                                />
+                              ) : null}
+                              <span className="underline underline-offset-4">Info</span>
+                            </span>
                           </button>
                         </div>
                         <div className="flex items-center justify-between gap-4">
                           <p>PSI Cooking</p>
                           <button
                             type="button"
+                            className="cursor-[url('/themes/father3/textbox/select.gif'),pointer]"
                             onMouseEnter={() =>
                               setHoveredPsiMove("PSI Cooking")
                             }
@@ -260,7 +274,19 @@ export default function HomePage() {
                             onMouseLeave={() => setHoveredPsiMove(null)}
                             onBlur={() => setHoveredPsiMove(null)}
                           >
-                            a
+                            <span className="inline-flex items-center gap-2">
+                              {hoveredPsiMove === "PSI Cooking" ? (
+                                <Image
+                                  src="/themes/father3/textbox/select.gif"
+                                  alt=""
+                                  width={24}
+                                  height={24}
+                                  className="h-6 w-6 object-contain"
+                                  unoptimized
+                                />
+                              ) : null}
+                              <span className="underline underline-offset-4">Info</span>
+                            </span>
                           </button>
                         </div>
                       </div>
@@ -276,12 +302,13 @@ export default function HomePage() {
                         ) : hoveredPsiMove === "PSI Cooking" ? (
                           <p>
                             Effective against all enemies. This move creates a
-                            multitude of random food items, including
-                            Taiwanese popcorn chicken, passionfruit jasmine tea, and garlic & egg fried
-                            rice. Ingredients included separately, sorry!
+                            multitude of random food items, including Taiwanese
+                            popcorn chicken, passionfruit jasmine tea, and
+                            garlic & egg fried rice. Ingredients sold
+                            separately, sorry!
                           </p>
                         ) : (
-                          <p>Hover over an a to see move details.</p>
+                          <p>Hover over the info of a PSI move to see move details.</p>
                         )}
                       </div>
                     </div>
@@ -314,7 +341,7 @@ export default function HomePage() {
               Press the{" "}
               <button
                 type="button"
-                className="underline underline-offset-4"
+                className="cursor-[url('/themes/father3/textbox/select.gif'),_pointer] underline underline-offset-4"
                 onClick={() => {
                   setHoveredPsiMove(null);
                   setIsPsiInfoOpen((current) => !current);
