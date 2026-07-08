@@ -95,9 +95,7 @@ export default function HomePage() {
   const currentYear = today.getFullYear();
   const thisApril6 = new Date(currentYear, 3, 6);
   const previousApril6 =
-    today >= thisApril6
-      ? thisApril6
-      : new Date(currentYear - 1, 3, 6);
+    today >= thisApril6 ? thisApril6 : new Date(currentYear - 1, 3, 6);
   const nextApril6 =
     today < thisApril6 ? thisApril6 : new Date(currentYear + 1, 3, 6);
   const experiencePoints = getDaysBetween(previousApril6, today);
@@ -198,6 +196,34 @@ export default function HomePage() {
             <p className="text-center">Press the -A- button for PSI info.</p>
           </div>
         </Textbox>
+
+        <div className="flex w-full flex-col justify-center items-center gap-6">
+          <div className="relative h-64 w-64 shrink-0">
+            <Image
+              src="/themes/father3/spacebup/space_buddy.gif"
+              alt="Space buddy sprite"
+              width={256}
+              height={256}
+              className="h-full w-full object-contain"
+              unoptimized
+            />
+          </div>
+
+          <Textbox width="auto" minHeight={550} lineHeight={1} fontSize="4rem">
+            <div className="space-y-6">
+              <p className="px-auto text-center">
+                What have I been working on so far?
+              </p>
+              <p>
+                This year, I am working on a game called &apos;spacebup!,&apos;
+                a Earthbound-inspired JRPG about a little space buddy traveling
+                across the galaxy to fight for moral justice and saving worlds
+                who can&apos;t save themselves. Here&apos;s a picture of my
+                space buddy!!
+              </p>
+            </div>
+          </Textbox>
+        </div>
       </div>
     </main>
   );
