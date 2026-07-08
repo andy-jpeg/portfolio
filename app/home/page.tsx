@@ -175,7 +175,20 @@ export default function HomePage() {
         >
           <div className="flex h-full flex-col justify-between">
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
-              <p className="justify-self-start">Level: 19/??</p>
+              <div className="justify-self-start">
+                <p>Level: 19/??</p>
+                <div className="flex flex-row items-center">
+                  <Image
+                    src="/themes/father3/andy/status.png"
+                    alt="Space buddy sprite"
+                    width={50}
+                    height={50}
+                    className="object-contain mr-4"
+                    unoptimized
+                  />
+                  <p>SWE & Game Developer</p>
+                </div>
+              </div>
 
               <div className="row-span-2 justify-self-end text-right">
                 <p>Offense: 40</p>
