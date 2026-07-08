@@ -258,7 +258,9 @@ export default function HomePage() {
                                   unoptimized
                                 />
                               ) : null}
-                              <span className="underline underline-offset-4">Info</span>
+                              <span className="underline underline-offset-4">
+                                Info
+                              </span>
                             </span>
                           </button>
                         </div>
@@ -285,7 +287,9 @@ export default function HomePage() {
                                   unoptimized
                                 />
                               ) : null}
-                              <span className="underline underline-offset-4">Info</span>
+                              <span className="underline underline-offset-4">
+                                Info
+                              </span>
                             </span>
                           </button>
                         </div>
@@ -308,7 +312,10 @@ export default function HomePage() {
                             separately, sorry!
                           </p>
                         ) : (
-                          <p>Hover over the info of a PSI move to see move details.</p>
+                          <p>
+                            Hover over the info of a PSI move to see move
+                            details.
+                          </p>
                         )}
                       </div>
                     </div>
@@ -383,8 +390,8 @@ export default function HomePage() {
                 This year, I am working on a game called &apos;spacebup!,&apos;
                 a Earthbound-inspired JRPG about a little space buddy traveling
                 across the galaxy to fight for moral justice and saving worlds
-                who might not be able to save themselves. Above is a picture of my space
-                buddy!
+                who might not be able to save themselves. Above is a picture of
+                that space buddy!
               </p>
             </div>
           </Textbox>
