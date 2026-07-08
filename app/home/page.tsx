@@ -248,8 +248,8 @@ export default function HomePage() {
             <Image
               src="/themes/father3/spacebup/space_buddy.gif"
               alt="Space buddy sprite"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               className="relative object-contain"
               unoptimized
             />
