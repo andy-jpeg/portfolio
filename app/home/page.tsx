@@ -111,9 +111,7 @@ export default function HomePage() {
         fontFamily: "Apple Kid, sans-serif",
       }}
     >
-      <div
-        className="mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center py-12"
-      >
+      <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center py-12">
         <div className="flex flex-row">
           <div
             className={`relative h-64 w-64 ${
@@ -180,8 +178,14 @@ export default function HomePage() {
           <div className="flex h-full flex-col justify-between">
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
               <div className="justify-self-start">
-                <p>Level: 19/??</p>
-                <div className="flex flex-row items-center">
+                <p
+                  className="absolute text-3xl top-1 bg-[#101010] m-0"
+                  style={{ fontFamily: '"Earthbound Beginnings", sans-serif' }}
+                >
+                  Andy
+                </p>
+                <p className="m-0">Level:&emsp;19/??</p>
+                <div className="flex flex-row items-center mt-0">
                   <Image
                     src="/themes/father3/andy/status.png"
                     alt="Andy status icon"
@@ -190,7 +194,7 @@ export default function HomePage() {
                     className="object-contain mr-4"
                     unoptimized
                   />
-                  <p>SWE & Game Developer</p>
+                  <p className="m-0">SWE & Game Developer</p>
                 </div>
               </div>
 
@@ -233,7 +237,9 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <p>{daysUntilNextLevel} Exp. for next level.</p>
+                <p className="text-center">
+                  {daysUntilNextLevel} Exp. for next level.
+                </p>
               </div>
             </div>
 
