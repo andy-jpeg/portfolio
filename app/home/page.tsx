@@ -101,13 +101,8 @@ export default function HomePage() {
 
   return (
     <main
-      className="min-h-screen text-zinc-900 bg-transparent"
+      className="min-h-screen text-zinc-900"
       style={{
-        backgroundImage: "url('/themes/father3/background.png')",
-        backgroundRepeat: "repeat",
-        backgroundSize: "100px 100px",
-        backgroundAttachment: "fixed",
-        backgroundColor: "transparent",
         fontFamily: "Apple Kid, sans-serif",
       }}
     >

@@ -19,8 +19,8 @@
 }
 
 :root {
-  --background: transparent;
-  --foreground: transparent;
+  --background: #84db94;
+  --foreground: #84db94;
 }
 
 @theme inline {
@@ -46,12 +46,21 @@ body {
   background-repeat: repeat;
   background-size: 100px 100px;
   background-attachment: fixed;
-  background-color: #98d99a;
+  background-color: #84db94;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+}
+
+main {
+  min-height: 100vh;
+  background-image: url("/themes/father3/background.png");
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  background-attachment: fixed;
+  background-color: #84db94;
 }
 
 @keyframes caret-blink {
