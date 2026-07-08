@@ -117,14 +117,24 @@ export default function Father3Textbox({
           height={96}
           className="block h-full w-full"
         />
-        <Image
-          src={`${SLICE_BASE_PATH}/bottom_right.png`}
-          alt=""
-          width={240}
-          height={96}
-          className="block h-full w-full"
-          style={{ transform: "translateY(1px)" }}
-        />
+        <div className="relative">
+          <Image
+            src={`${SLICE_BASE_PATH}/bottom_right.png`}
+            alt=""
+            width={240}
+            height={96}
+            className="block h-full w-full"
+            style={{ transform: "translateY(1px)" }}
+          />
+          <Image
+            src={`${SLICE_BASE_PATH}/pause.gif`}
+            alt=""
+            width={64}
+            height={64}
+            className="pointer-events-none absolute right-8 bottom-1 z-20 h-6 w-6 object-contain"
+            unoptimized
+          />
+        </div>
       </div>
 
       <div className="relative z-10 flex h-full w-full items-start justify-start">
