@@ -10,6 +10,7 @@ type Father3TextboxProps = {
   padding?: number | string;
   fontSize?: number | string;
   lineHeight?: number | string;
+  showPointer?: boolean;
 };
 
 const SLICE_BASE_PATH = "/themes/father3/textbox";
@@ -23,6 +24,7 @@ export default function Father3Textbox({
   minHeight = DEFAULT_HEIGHT,
   fontSize = "clamp(0.9rem, 2vw, 1.25rem)",
   lineHeight = 1.5,
+  showPointer = true,
 }: Father3TextboxProps) {
   const numericMinHeight =
     typeof minHeight === "number"
@@ -126,14 +128,16 @@ export default function Father3Textbox({
             className="block h-full w-full"
             style={{ transform: "translateY(1px)" }}
           />
-          <Image
-            src={`${SLICE_BASE_PATH}/pause.gif`}
-            alt=""
-            width={64}
-            height={64}
-            className="pointer-events-none absolute right-8 bottom-1 z-20 h-6 w-6 object-contain"
-            unoptimized
-          />
+          {showPointer ? (
+            <Image
+              src={`${SLICE_BASE_PATH}/pause.gif`}
+              alt=""
+              width={64}
+              height={64}
+              className="pointer-events-none absolute right-8 bottom-1 z-20 h-6 w-6 object-contain"
+              unoptimized
+            />
+          ) : null}
         </div>
       </div>
 
