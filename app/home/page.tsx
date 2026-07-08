@@ -113,7 +113,6 @@ export default function HomePage() {
     >
       <div
         className="mx-auto flex min-h-screen w-full max-w-4xl flex-col items-center py-12"
-        style={{ gap: "4rem" }}
       >
         <div className="flex flex-row">
           <div
@@ -170,6 +169,7 @@ export default function HomePage() {
           lineHeight={1.05}
           showPointer={false}
           fontSize="4rem"
+          className="mt-16"
         >
           <div className="flex h-full flex-col justify-between">
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
@@ -178,7 +178,7 @@ export default function HomePage() {
                 <div className="flex flex-row items-center">
                   <Image
                     src="/themes/father3/andy/status.png"
-                    alt="Space buddy sprite"
+                    alt="Andy status icon"
                     width={50}
                     height={50}
                     className="object-contain mr-4"
@@ -188,18 +188,45 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="row-span-2 justify-self-end text-right">
-                <p>Offense: 40</p>
-                <p>Defense: 55</p>
-                <p>Speed: 60</p>
-                <p>Guts: 1</p>
-                <p>Vitality: 60</p>
-                <p>IQ: -1</p>
-                <p>Luck: 80</p>
+              <div className="row-span-2 justify-self-end">
+                <div className="flex gap-6">
+                  <div className="text-right">
+                    <p>Offense:</p>
+                    <p>Defense:</p>
+                    <p>Speed:</p>
+                    <p>Guts:</p>
+                    <p>Vitality:</p>
+                    <p>IQ:</p>
+                    <p>Luck:</p>
+                  </div>
+
+                  <div className="text-right">
+                    <p>40</p>
+                    <p>55</p>
+                    <p>60</p>
+                    <p>1</p>
+                    <p>60</p>
+                    <p>-1</p>
+                    <p>80</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <p>Experience Points: {experiencePoints}</p>
+              <div className="space-y-4">
+                <div className="flex gap-6">
+                  <div className="text-right">
+                    <p>Hit Points:</p>
+                    <p>Psychic Points:</p>
+                    <p>Experience Points:</p>
+                  </div>
+
+                  <div className="text-right">
+                    <p>129 / 129</p>
+                    <p>74 / 74</p>
+                    <p>{experiencePoints}</p>
+                  </div>
+                </div>
+
                 <p>{daysUntilNextLevel} Exp. for next level.</p>
               </div>
             </div>
@@ -208,14 +235,22 @@ export default function HomePage() {
           </div>
         </Textbox>
 
-        <div className="flex w-full flex-col justify-center items-center gap-6">
-          <div className="relative h-64 w-64 shrink-0">
+        <div className="flex w-full flex-col mt-[16] justify-center items-center gap-6">
+          <div className="relative gap-12 flex flex-row">
+            <Image
+              src={"/themes/father3/andy/sleeping.gif"}
+              alt="Andy sleeping sprite"
+              width={200}
+              height={200}
+              className="relative mt-auto object-contain"
+              draggable={false}
+            />
             <Image
               src="/themes/father3/spacebup/space_buddy.gif"
               alt="Space buddy sprite"
-              width={256}
-              height={256}
-              className="h-full w-full object-contain"
+              width={200}
+              height={200}
+              className="relative object-contain"
               unoptimized
             />
           </div>
