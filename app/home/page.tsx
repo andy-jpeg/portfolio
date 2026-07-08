@@ -53,8 +53,6 @@ export default function HomePage() {
       return;
     }
 
-    setTypedLength(0);
-
     const text = "andy.jpeg";
     const typingInterval = window.setInterval(() => {
       setTypedLength((currentLength) => {
@@ -109,7 +107,7 @@ export default function HomePage() {
         backgroundRepeat: "repeat",
         backgroundSize: "100px 100px",
         backgroundAttachment: "fixed",
-        backgroundColor: "transparent",
+        backgroundColor: "#98d99a",
         fontFamily: "Apple Kid, sans-serif",
       }}
     >
@@ -151,7 +149,7 @@ export default function HomePage() {
             fontSize="4rem"
           >
             <div>
-              <p>What is this boy&apos;s name?</p>
+              <p>What should this boy&apos;s name be?</p>
               <p>
                 {caretIndex === -1 ? (
                   typedDisplay
