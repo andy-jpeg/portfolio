@@ -27,6 +27,7 @@ export default function HomePage() {
   const [hasMounted, setHasMounted] = useState(false);
   const [typedLength, setTypedLength] = useState(0);
   const [isPsiInfoOpen, setIsPsiInfoOpen] = useState(false);
+  const [hoveredPsiMove, setHoveredPsiMove] = useState<string | null>(null);
 
   useEffect(() => {
     let isCancelled = false;
@@ -175,7 +176,7 @@ export default function HomePage() {
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
               <div className="justify-self-start">
                 <p
-                  className="absolute text-3xl top-1 bg-[#101010]"
+                  className="absolute text-3xl -top-7 bg-[#101010]"
                   style={{ fontFamily: '"Earthbound Beginnings", sans-serif' }}
                 >
                   Andy
@@ -219,28 +220,72 @@ export default function HomePage() {
               </div>
 
               {isPsiInfoOpen ? (
-                <div className="absolute inset-0 z-20 flex items-center justify-center">
+                <div className="absolute inset-0 z-20 flex items-start justify-center pt-16">
                   <button
                     type="button"
                     aria-label="Close PSI info"
                     className="absolute inset-0 cursor-default bg-black/0"
-                    onClick={() => setIsPsiInfoOpen(false)}
+                    onClick={() => {
+                      setIsPsiInfoOpen(false);
+                      setHoveredPsiMove(null);
+                    }}
                   />
-                  <div className="relative z-10 w-[72%] max-w-[26rem] border-4 border-black bg-white px-6 py-5 text-black shadow-[0_0_0_4px_white]">
-                    <div
-                      className="space-y-2 text-3xl leading-none"
-                      style={{ fontFamily: '"Earthbound Beginnings", sans-serif' }}
-                    >
-                      <div className="flex items-center justify-between gap-4">
-                        <span>PSI Friend</span>
-                        <span className="whitespace-nowrap">α β θ Ω</span>
+                  <Textbox
+                    showPointer={false}
+                    minHeight={400}
+                    className="relative z-10"
+                  >
+                    <div className="flex h-full flex-col justify-between text-6xl">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between gap-4">
+                          <p>PSI Gaming</p>
+                          <button
+                            type="button"
+                            onMouseEnter={() => setHoveredPsiMove("PSI Gaming")}
+                            onFocus={() => setHoveredPsiMove("PSI Gaming")}
+                            onMouseLeave={() => setHoveredPsiMove(null)}
+                            onBlur={() => setHoveredPsiMove(null)}
+                          >
+                            a
+                          </button>
+                        </div>
+                        <div className="flex items-center justify-between gap-4">
+                          <p>PSI Cooking</p>
+                          <button
+                            type="button"
+                            onMouseEnter={() =>
+                              setHoveredPsiMove("PSI Cooking")
+                            }
+                            onFocus={() => setHoveredPsiMove("PSI Cooking")}
+                            onMouseLeave={() => setHoveredPsiMove(null)}
+                            onBlur={() => setHoveredPsiMove(null)}
+                          >
+                            a
+                          </button>
+                        </div>
                       </div>
-                      <div className="flex items-center justify-between gap-4">
-                        <span>PSI Flash</span>
-                        <span className="whitespace-nowrap">α β θ Ω</span>
+
+                      <div className="pt-4 text-5xl">
+                        {hoveredPsiMove === "PSI Gaming" ? (
+                          <p>
+                            Effective against Roblox horror games, Persona 3
+                            Reload, and Octopath Traveler enemies. Ineffective
+                            against Metaphor: ReFantazio, Final Fantasy XVI, and
+                            Limbus Company enemies due to high difficulty.
+                          </p>
+                        ) : hoveredPsiMove === "PSI Cooking" ? (
+                          <p>
+                            Effective against all enemies. This move creates a
+                            multitude of random food items, including
+                            Taiwanese popcorn chicken, passionfruit jasmine tea, and garlic & egg fried
+                            rice. Ingredients included separately, sorry!
+                          </p>
+                        ) : (
+                          <p>Hover over an a to see move details.</p>
+                        )}
                       </div>
                     </div>
-                  </div>
+                  </Textbox>
                 </div>
               ) : null}
 
@@ -270,7 +315,10 @@ export default function HomePage() {
               <button
                 type="button"
                 className="underline underline-offset-4"
-                onClick={() => setIsPsiInfoOpen((current) => !current)}
+                onClick={() => {
+                  setHoveredPsiMove(null);
+                  setIsPsiInfoOpen((current) => !current);
+                }}
               >
                 A
               </button>{" "}
