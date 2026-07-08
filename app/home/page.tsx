@@ -26,6 +26,7 @@ export default function HomePage() {
   const [isEntryComplete, setIsEntryComplete] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [typedLength, setTypedLength] = useState(0);
+  const [isPsiInfoOpen, setIsPsiInfoOpen] = useState(false);
 
   useEffect(() => {
     let isCancelled = false;
@@ -170,7 +171,7 @@ export default function HomePage() {
           fontSize="4rem"
           className="mt-16"
         >
-          <div className="flex h-full flex-col justify-between">
+          <div className="relative flex h-full flex-col justify-between">
             <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
               <div className="justify-self-start">
                 <p
@@ -217,6 +218,32 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {isPsiInfoOpen ? (
+                <div className="absolute inset-0 z-20 flex items-center justify-center">
+                  <button
+                    type="button"
+                    aria-label="Close PSI info"
+                    className="absolute inset-0 cursor-default bg-black/0"
+                    onClick={() => setIsPsiInfoOpen(false)}
+                  />
+                  <div className="relative z-10 w-[72%] max-w-[26rem] border-4 border-black bg-white px-6 py-5 text-black shadow-[0_0_0_4px_white]">
+                    <div
+                      className="space-y-2 text-3xl leading-none"
+                      style={{ fontFamily: '"Earthbound Beginnings", sans-serif' }}
+                    >
+                      <div className="flex items-center justify-between gap-4">
+                        <span>PSI Friend</span>
+                        <span className="whitespace-nowrap">α β θ Ω</span>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <span>PSI Flash</span>
+                        <span className="whitespace-nowrap">α β θ Ω</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+
               <div className="space-y-4">
                 <div className="flex gap-6">
                   <div className="text-right">
@@ -238,7 +265,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            <p className="text-center">Press the -A- button for PSI info.</p>
+            <p className="text-center">
+              Press the{" "}
+              <button
+                type="button"
+                className="underline underline-offset-4"
+                onClick={() => setIsPsiInfoOpen((current) => !current)}
+              >
+                A
+              </button>{" "}
+              button for PSI info.
+            </p>
           </div>
         </Textbox>
 
@@ -271,8 +308,8 @@ export default function HomePage() {
                 This year, I am working on a game called &apos;spacebup!,&apos;
                 a Earthbound-inspired JRPG about a little space buddy traveling
                 across the galaxy to fight for moral justice and saving worlds
-                who can&apos;t save themselves. Here&apos;s a picture of my
-                space buddy!!
+                who can&apos;t save themselves. Above is a picture of my space
+                buddy!!
               </p>
             </div>
           </Textbox>
