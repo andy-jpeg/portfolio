@@ -9,6 +9,18 @@ import poseSprite from "@themes/father3/andy/pose.png";
 
 const entryDuration = 2500;
 
+function getDaysBetween(start: Date, end: Date) {
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const startUtc = Date.UTC(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate(),
+  );
+  const endUtc = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
+
+  return Math.round((endUtc - startUtc) / msPerDay);
+}
+
 export default function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
   const [isEntryComplete, setIsEntryComplete] = useState(false);
@@ -79,6 +91,17 @@ export default function HomePage() {
     (typedLength < typedText.length ? "|" : "") +
     "_".repeat(Math.max(typedText.length - typedLength - 1, 0));
   const caretIndex = typedDisplay.indexOf("|");
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const thisApril6 = new Date(currentYear, 3, 6);
+  const previousApril6 =
+    today >= thisApril6
+      ? thisApril6
+      : new Date(currentYear - 1, 3, 6);
+  const nextApril6 =
+    today < thisApril6 ? thisApril6 : new Date(currentYear + 1, 3, 6);
+  const experiencePoints = getDaysBetween(previousApril6, today);
+  const daysUntilNextLevel = getDaysBetween(today, nextApril6);
 
   return (
     <main
@@ -146,12 +169,33 @@ export default function HomePage() {
           </Textbox>
         </div>
 
-        <Textbox minHeight={100} lineHeight={1.2} fontSize="4rem">
-          <div>
-            <p>
-              second-year student @ univ of fl majoring in computer science &
-              minoring in game design!
-            </p>
+        <Textbox
+          minHeight={600}
+          lineHeight={1.05}
+          showPointer={false}
+          fontSize="4rem"
+        >
+          <div className="flex h-full flex-col justify-between">
+            <div className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-8">
+              <p className="justify-self-start">Level: 19/??</p>
+
+              <div className="row-span-2 justify-self-end text-right">
+                <p>Offense: 40</p>
+                <p>Defense: 55</p>
+                <p>Speed: 60</p>
+                <p>Guts: 1</p>
+                <p>Vitality: 60</p>
+                <p>IQ: -1</p>
+                <p>Luck: 80</p>
+              </div>
+
+              <div className="space-y-2">
+                <p>Experience Points: {experiencePoints}</p>
+                <p>{daysUntilNextLevel} Exp. for next level.</p>
+              </div>
+            </div>
+
+            <p className="text-center">Press the -A- button for PSI info.</p>
           </div>
         </Textbox>
       </div>
