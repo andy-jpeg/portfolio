@@ -381,7 +381,7 @@ export default function HomePage() {
             />
           </div>
 
-          <Textbox width="auto" minHeight={550} lineHeight={1} fontSize="4rem">
+          <Textbox width="100%" minHeight={550} lineHeight={1} fontSize="4rem">
             <div className="space-y-6">
               <p className="px-auto text-center">
                 What have I been working on so far?
@@ -395,6 +395,63 @@ export default function HomePage() {
               </p>
             </div>
           </Textbox>
+
+          <div className="flex gap-8">
+            <Textbox
+              width="41rem"
+              minHeight={850}
+              lineHeight={1}
+              fontSize="4rem"
+            >
+              <div className="space-y-6">
+                <p className="px-auto text-center">Top Albums So Far</p>
+                <div className="text-left flex flex-col gap-8">
+                  <p className="flex text-right items-center gap-8">
+                    <Image
+                      src="/covers/underscores.jpg"
+                      alt="underscores 'U' album"
+                      width={200}
+                      height={200}
+                      className="relative flex-grow-0 object-contain mr-auto"
+                      unoptimized
+                    />{" "}
+                    &apos;U&apos; by underscores
+                  </p>
+                  <p className="flex text-right items-center gap-8">
+                    <Image
+                      src="/covers/ninajirachi.jpg"
+                      alt="Ninajirachi 'I Love My Computer' album"
+                      width={200}
+                      height={200}
+                      className="relative object-contain mr-auto"
+                      unoptimized
+                    />
+                    &apos;I Love My Computer&apos; by Ninajirachi
+                  </p>
+                  <p className="flex text-right items-center gap-8">
+                    <Image
+                      src="/covers/pinkpantheress.jpg"
+                      alt="PinkPantheress 'Fancy That' album"
+                      width={200}
+                      height={200}
+                      className="relative object-contain mr-auto"
+                      unoptimized
+                    />
+                    &apos;Fancy That&apos; by PinkPantheress
+                  </p>
+                </div>
+              </div>
+            </Textbox>
+
+            <Image
+              src={"/themes/father3/andy/jamming.gif"}
+              alt="Andy listening to music sprite"
+              width={200}
+              height={200}
+              className="relative object-contain"
+              draggable={false}
+            />
+          </div>
         </div>
       </div>
     </main>
