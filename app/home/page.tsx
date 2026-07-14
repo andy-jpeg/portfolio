@@ -408,7 +408,7 @@ export default function HomePage() {
                 <div className="text-left flex flex-col gap-8">
                   <p className="flex text-right items-center gap-8">
                     <Image
-                      src="/covers/underscores.jpg"
+                      src="/covers/underscores.png"
                       alt="underscores 'U' album"
                       width={200}
                       height={200}
@@ -419,7 +419,7 @@ export default function HomePage() {
                   </p>
                   <p className="flex text-right items-center gap-8">
                     <Image
-                      src="/covers/ninajirachi.jpg"
+                      src="/covers/ninajirachi.png"
                       alt="Ninajirachi 'I Love My Computer' album"
                       width={200}
                       height={200}
@@ -430,7 +430,7 @@ export default function HomePage() {
                   </p>
                   <p className="flex text-right items-center gap-8">
                     <Image
-                      src="/covers/pinkpantheress.jpg"
+                      src="/covers/pinkpantheress.png"
                       alt="PinkPantheress 'Fancy That' album"
                       width={200}
                       height={200}
