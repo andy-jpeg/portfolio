@@ -381,17 +381,16 @@ export default function HomePage() {
             />
           </div>
 
-          <Textbox width="100%" minHeight={550} lineHeight={1} fontSize="4rem">
+          <Textbox width="100%" minHeight={500} lineHeight={1} fontSize="4rem">
             <div className="space-y-6">
               <p className="px-auto text-center">
                 What have I been working on so far?
               </p>
               <p>
-                This year, I am working on a game called &apos;spacebup!,&apos;
-                a Earthbound-inspired JRPG about a little space buddy traveling
-                across the galaxy to fight for moral justice and saving worlds
-                who might not be able to save themselves. Above is a picture of
-                that space buddy!
+                This year, I have been working on a game called
+                &apos;spacebup!,&apos; a Earthbound-inspired JRPG about a little
+                space buddy traveling across the galaxy to save local planets
+                from being destroyed by an unknown evil organization!
               </p>
             </div>
           </Textbox>
@@ -452,6 +451,19 @@ export default function HomePage() {
               draggable={false}
             />
           </div>
+
+          <p className="text-center text-7xl">
+            Made with{" "}
+            <Image
+              src={"/themes/father3/heart.gif"}
+              alt="Andy listening to music sprite"
+              width={60}
+              height={60}
+              className="relative inline object-contain"
+              draggable={false}
+            />{" "}
+            by Andy
+          </p>
         </div>
       </div>
     </main>
