@@ -14,7 +14,7 @@ type Father3TextboxProps = {
 };
 
 const SLICE_BASE_PATH = "/themes/father3/textbox";
-const DEFAULT_HEIGHT = 200;
+const DEFAULT_HEIGHT = 100;
 
 export default function Father3Textbox({
   children,
