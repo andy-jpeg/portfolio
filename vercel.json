@@ -1,7 +1,14 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/shello",
+      "destination": "/shello/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/shello/",
       "destination": "https://pub-b8276e371fa4415e822048888bef5fc3.r2.dev/index.html"
     },
     {
