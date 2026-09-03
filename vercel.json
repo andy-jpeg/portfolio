@@ -2,7 +2,11 @@
   "rewrites": [
     {
       "source": "/shello",
-      "destination": "https://shello-world.vercel.app"
+      "destination": "https://pub-b8276e371fa4415e822048888bef5fc3.r2.dev/index.html"
+    },
+    {
+      "source": "/shello/:path*",
+      "destination": "https://pub-b8276e371fa4415e822048888bef5fc3.r2.dev/:path*"
     }
   ]
 }
