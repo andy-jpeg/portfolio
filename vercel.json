@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/shello",
+      "destination": "https://shello-world.vercel.app"
+    }
+  ]
+}
