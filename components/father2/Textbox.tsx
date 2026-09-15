@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
-type Father3TextboxProps = {
+type Father2TextboxProps = {
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
@@ -13,10 +13,10 @@ type Father3TextboxProps = {
   showPointer?: boolean;
 };
 
-const SLICE_BASE_PATH = "/themes/father3/textbox";
+const SLICE_BASE_PATH = "/themes/father2/textbox";
 const DEFAULT_HEIGHT = 100;
 
-export default function Father3Textbox({
+export default function Father2Textbox({
   children,
   className = "",
   style,
@@ -25,7 +25,7 @@ export default function Father3Textbox({
   fontSize = "clamp(0.9rem, 2vw, 1.25rem)",
   lineHeight = 1.5,
   showPointer = true,
-}: Father3TextboxProps) {
+}: Father2TextboxProps) {
   const numericMinHeight =
     typeof minHeight === "number"
       ? minHeight

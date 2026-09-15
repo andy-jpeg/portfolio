@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "@fontsource/michroma";
+@import "@fontsource/anonymous-pro";
+@import "@fontsource/jetbrains-mono";
 
 @font-face {
   font-family: "Apple Kid";
@@ -19,8 +22,10 @@
 }
 
 :root {
-  --background: #84db94;
-  --foreground: #84db94;
+  --background: #ffffff;
+  --foreground: #111111;
+  --grid-size: 30px;
+  --grid-line: rgba(80, 80, 80, 0.1);
 }
 
 @theme inline {
@@ -32,8 +37,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: transparent;
-    --foreground: transparent;
+    --background: #ffffff;
+    --foreground: #111111;
   }
 }
 
@@ -42,21 +47,32 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background-image: url("/themes/father3/background.png");
-  background-repeat: repeat;
-  background-size: 100px 100px;
-  background-attachment: fixed;
-  background-color: #84db94;
+  background: #ffffff;
+  background-image: none;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Michroma", Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  background: #ffffff;
 }
 
 main {
   min-height: 100vh;
-  background-image: url("/themes/father3/background.png");
+  background: #ffffff;
+  background-image: none;
+}
+
+.page-grid {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+.father2-theme {
+  background-image: url("/themes/father2/background.png");
   background-repeat: repeat;
   background-size: 100px 100px;
   background-attachment: fixed;
@@ -77,4 +93,8 @@ main {
 .caret {
   display: inline-block;
   animation: caret-blink 0.9s steps(1, end) infinite;
+}
+
+.bg-muted {
+  background-color: #282828;
 }
