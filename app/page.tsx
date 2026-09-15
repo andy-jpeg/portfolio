@@ -2,34 +2,19 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 
 import ScrollingText from "@/components/home/ScrollingText";
 import { RepeatingDivider } from "@/components/home/RepeatingDivider";
 import { SectionHeader } from "@/components/home/SectionHeader";
 
-function scrollToTop() {
-  const startPosition = window.scrollY;
-  const duration = 700;
-  const startTime = performance.now();
-
-  function animateScroll(currentTime: number) {
-    const progress = Math.min((currentTime - startTime) / duration, 1);
-    const easedProgress =
-      progress < 0.5
-        ? 2 * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
-    window.scrollTo(0, startPosition * (1 - easedProgress));
-
-    if (progress < 1) {
-      window.requestAnimationFrame(animateScroll);
-    }
-  }
-
-  window.requestAnimationFrame(animateScroll);
-}
-
 export default function Home() {
+  // No duration/easing passed here on purpose: Lenis falls back to the
+  // options configured on the root instance (see SmoothScroll.tsx), so
+  // this uses the exact same easing curve as the page's smooth scrolling.
+  const lenis = useLenis();
+  const scrollToTop = () => lenis?.scrollTo(0);
+
   return (
     <main
       id="page-top"
