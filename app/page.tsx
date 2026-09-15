@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main
       id="page-top"
-      className="relative min-h-screen overflow-x-visible bg-white  px-5 sm:px-8 lg:px-16"
+      className="relative overflow-x-visible bg-white  px-5 sm:px-8 lg:px-16"
       aria-label="Home"
     >
       <div className="absolute inset-0 bg-white" aria-hidden="true" />
@@ -113,11 +113,14 @@ export default function Home() {
         />
       </div>
 
-      <p className="relative z-10 text-right pr-5 sm:pr-8 lg:pr-16 text-2xl text-black my-4 max-w-2xl ml-auto">
+      <p
+        className="relative z-10 text-right pr-5 sm:pr-8 lg:pr-16 text-2xl text-black my-4 max-w-2xl ml-auto"
+        style={{ fontFamily: "Anonymous Pro" }}
+      >
         as you can tell, most of my technologies are primarily in{" "}
-        <span className="font-bold">full-stack development!</span><br />i enjoy
-        building end-to-end solutions that combine frontend elegance with strong
-        reliability in the backend.
+        <span className="font-bold">full-stack development!</span>
+        <br />i enjoy building end-to-end solutions that combine frontend
+        elegance with strong backend reliability.
       </p>
 
       <div className="relative z-10 mb-24">
