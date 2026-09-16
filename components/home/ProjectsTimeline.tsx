@@ -30,6 +30,12 @@ const PROJECTS: ProjectEntry[] = [
     stack: "React, TypeScript, Supabase, Tailwind, Vite",
   },
   {
+    title: "Shello, World!",
+    description: "upcoming 3d platformer about shells of code 🐚",
+    link: "https://andyjpeg.itch.io/shello-world",
+    stack: "Godot, Cloudflare R2, GitHub Actions",
+  },
+  {
     title: "Streaks Across the Canvas",
     description: "multiplayer drawing game on Roblox (100k+ visits!) 🖍️",
     link: "https://www.roblox.com/games/6460041062/become-a-crayon",
@@ -42,6 +48,11 @@ const PROJECTS: ProjectEntry[] = [
     stack: "Lua, Roblox Studio, HTTP/REST",
   },
 ];
+
+// Pulled out so other components (the sh3lly caption on the homepage) can
+// link to it without duplicating/hardcoding the URL.
+export const SHELLO_WORLD_LINK =
+  PROJECTS.find((project) => project.title === "Shello, World!")?.link ?? "";
 
 // Each entry fades/slides up as it scrolls into view, staggered by index
 // (same easing language as the hero's title/description reveal).

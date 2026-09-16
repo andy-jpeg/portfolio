@@ -8,7 +8,10 @@ import ScrollingText from "@/components/home/ScrollingText";
 import { RepeatingDivider } from "@/components/home/RepeatingDivider";
 import { SectionHeader } from "@/components/home/SectionHeader";
 import { ExperienceTimeline } from "@/components/home/ExperienceTimeline";
-import { ProjectsTimeline } from "@/components/home/ProjectsTimeline";
+import {
+  ProjectsTimeline,
+  SHELLO_WORLD_LINK,
+} from "@/components/home/ProjectsTimeline";
 
 const TITLE_TEXT = "andy!";
 
@@ -225,6 +228,28 @@ export default function Home() {
               title="PROJECTS"
               description="a lot of my projects have been made through Roblox Studio, Next.js, & Godot!"
             />
+            <Image
+              src="/themes/home/sh3lly-transparent.gif"
+              alt="Sh3lly, the mascot of Shello, World!"
+              width={1080}
+              height={1080}
+              unoptimized
+              className="ml-12 mt-8 h-auto w-64 sm:w-80 md:w-96"
+            />
+            <p
+              className="mx-auto text-lg text-black/70"
+              style={{ fontFamily: "Anonymous Pro" }}
+            >
+              this is Sh3lly, the main protagonist of{" "}
+              <a
+                href={SHELLO_WORLD_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 transition-opacity hover:opacity-60"
+              >
+                Shello, World!
+              </a>
+            </p>
           </div>
           <div className="md:w-[65%]">
             <ProjectsTimeline />
