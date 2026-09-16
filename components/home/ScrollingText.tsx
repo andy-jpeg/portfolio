@@ -72,8 +72,14 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   stiffness = 400,
   numCopies = 6,
   velocityMapping = { input: [0, 1000], output: [0, 5] },
-  parallaxClassName = "flex items-center relative overflow-hidden h-[4rem] bg-muted -mx-[100vw] md:-mx-[100vw]",
-  scrollerClassName = "flex whitespace-nowrap text-white text-center text-3xl tracking-tight leading-none",
+  // -mx used to be a blanket -100vw on every breakpoint, which is *way*
+  // more than needed to escape main's own px-5/sm:px-8/lg:px-16 padding —
+  // it was ballooning the layout viewport on mobile (hence horizontal
+  // scroll, and the wave dividers' own vw-based math landing short of the
+  // real edge). Matching main's actual padding breaks out exactly to the
+  // screen edge with nothing left over.
+  parallaxClassName = "flex items-center relative overflow-hidden h-12 bg-muted -mx-32 sm:h-14",
+  scrollerClassName = "flex whitespace-nowrap text-white text-center text-lg tracking-tight leading-none sm:text-2xl lg:text-3xl",
   parallaxStyle,
   scrollerStyle = { fontFamily: "JetBrains Mono" },
 }) => {

@@ -52,7 +52,15 @@ export default function Home() {
   // options configured on the root instance (see SmoothScroll.tsx), so
   // this uses the exact same easing curve as the page's smooth scrolling.
   const lenis = useLenis();
-  const scrollToTop = () => lenis?.scrollTo(0);
+  // On mobile, SmoothScroll skips mounting Lenis entirely (see its own
+  // comment), so fall back to native smooth scrolling there.
+  const scrollToTop = () => {
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <main
@@ -84,9 +92,9 @@ export default function Home() {
       <section className="relative z-10 min-h-screen overflow-visible">
         <div className="relative mx-auto flex min-h-screen w-full max-w-none">
           <div className="relative z-10 flex flex-col items-start gap-2 justify-center py-16">
-            <p className="text-3xl tracking-tight text-black">hi, i&apos;m</p>
+            <p className="text-xl tracking-tight text-black sm:text-2xl md:text-3xl">hi, i&apos;m</p>
             <motion.p
-              className="-mt-3 mb-2 text-7xl tracking-tight text-black"
+              className="-mt-3 mb-2 text-5xl tracking-tight text-black sm:text-6xl md:text-7xl"
               aria-label={TITLE_TEXT}
               variants={titleContainerVariants}
               initial="hidden"
@@ -108,7 +116,7 @@ export default function Home() {
               ))}
             </motion.p>
             <motion.p
-              className="text-3xl tracking-tight text-black"
+              className="text-xl tracking-tight text-black sm:text-2xl md:text-3xl"
               style={{ fontFamily: "Anonymous Pro" }}
               variants={descriptionVariants}
               initial="hidden"
@@ -123,7 +131,7 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <div className="pointer-events-none absolute right-[-5rem] top-1/2 z-0 h-[420px] w-[100vw] -translate-y-1/2 md:h-[500px]">
+          <div className="pointer-events-none absolute right-[-5rem] top-1/2 z-0 hidden h-[420px] w-[100vw] -translate-y-1/2 sm:block md:h-[500px]">
             <Image
               src="/themes/home/hero.svg"
               alt="Andy hero illustration"
@@ -137,16 +145,16 @@ export default function Home() {
 
       <RepeatingDivider />
 
-      <section className="relative z-10 mx-auto px-5 pr-[50%] w-full max-w-none py-16">
+      <section className="relative z-10 mx-auto w-full max-w-none px-5 py-16 sm:pr-[50%]">
         <SectionHeader
           title="SKILLS"
           description="i’ve developed with multiple technologies through production-level projects & personal interests!"
         />
       </section>
 
-      <div style={{ transform: "rotate(-14deg) translateY(-80px)" }}>
+      <div className="-translate-y-4 -rotate-[6deg] sm:-translate-y-10 sm:-rotate-[10deg] md:-translate-y-20 md:-rotate-[14deg]">
         <p
-          className="text-left pl-5 sm:pl-8 lg:pl-16 text-5xl text-black mb-4"
+          className="text-left pl-5 sm:pl-8 lg:pl-16 text-3xl text-black mb-4 sm:text-4xl md:text-5xl"
           style={{ fontFamily: "Michroma" }}
         >
           LANGUAGES
@@ -159,9 +167,9 @@ export default function Home() {
         />
       </div>
 
-      <div style={{ transform: "rotate(-14deg) translateY(-25px)" }}>
+      <div className="-translate-y-2 -rotate-[6deg] sm:-translate-y-4 sm:-rotate-[10deg] md:-translate-y-[25px] md:-rotate-[14deg]">
         <p
-          className="text-right pr-5 sm:pr-8 lg:pr-16 text-5xl text-black mb-4"
+          className="text-right pr-5 sm:pr-8 lg:pr-16 text-3xl text-black mb-4 sm:text-4xl md:text-5xl"
           style={{ fontFamily: "Michroma" }}
         >
           FRAMEWORKS
@@ -175,7 +183,7 @@ export default function Home() {
       </div>
 
       <motion.p
-        className="relative z-10 text-right pr-5 sm:pr-8 lg:pr-16 text-2xl text-black my-4 max-w-2xl ml-auto"
+        className="relative z-10 text-right pr-5 sm:pr-8 lg:pr-16 text-lg text-black my-4 max-w-2xl ml-auto sm:text-xl md:text-2xl"
         style={{ fontFamily: "Anonymous Pro" }}
         variants={descriptionVariants}
         initial="hidden"
@@ -190,7 +198,7 @@ export default function Home() {
 
       <div className="relative z-10 mt-16 mb-24">
         <p
-          className="text-left pl-5 sm:pl-8 lg:pl-16 text-5xl text-black mb-4"
+          className="text-left pl-5 sm:pl-8 lg:pl-16 text-3xl text-black mb-4 sm:text-4xl md:text-5xl"
           style={{ fontFamily: "Michroma" }}
         >
           TOOLS & PLATFORMS
@@ -205,7 +213,7 @@ export default function Home() {
 
       <RepeatingDivider />
 
-      <section className="relative z-10 mx-auto w-full max-w-none px-5 mr-16 py-16">
+      <section className="relative z-10 mx-auto w-full max-w-none px-5 py-16 md:mr-16">
         <div className="flex flex-col gap-10 md:flex-row md:gap-12">
           <div className="md:w-[50%]">
             <SectionHeader
@@ -221,7 +229,7 @@ export default function Home() {
 
       <RepeatingDivider />
 
-      <section className="relative z-10 mx-auto w-full max-w-none px-5 mr-16 py-16">
+      <section className="relative z-10 mx-auto w-full max-w-none px-5 py-16 md:mr-16">
         <div className="flex flex-col gap-10 md:flex-row md:gap-12">
           <div className="md:w-[50%]">
             <SectionHeader
@@ -234,13 +242,13 @@ export default function Home() {
               width={1080}
               height={1080}
               unoptimized
-              className="ml-12 mt-8 h-auto w-64 sm:w-80 md:w-96"
+              className="mt-8 h-auto w-48 sm:ml-12 sm:w-64 md:w-80 lg:w-96"
             />
             <p
               className="mx-auto text-lg text-black/70"
               style={{ fontFamily: "Anonymous Pro" }}
             >
-              this is Sh3lly, the main protagonist of{" "}
+              sprite of Sh3lly, the main protagonist of{" "}
               <a
                 href={SHELLO_WORLD_LINK}
                 target="_blank"

@@ -38,7 +38,7 @@ export function SectionHeader({ title, description }: SectionHeaderProps) {
   return (
     <header>
       <motion.h2
-        className="text-6xl uppercase tracking-tight text-black"
+        className="text-4xl uppercase tracking-tight text-black sm:text-5xl md:text-6xl"
         aria-label={title}
         variants={titleContainerVariants}
         initial="hidden"
@@ -58,7 +58,7 @@ export function SectionHeader({ title, description }: SectionHeaderProps) {
         ))}
       </motion.h2>
       <motion.p
-        className="mt-2 text-xl"
+        className="mt-2 text-base sm:text-lg md:text-xl"
         style={{ fontFamily: "Anonymous Pro" }}
         variants={descriptionVariants}
         initial="hidden"
