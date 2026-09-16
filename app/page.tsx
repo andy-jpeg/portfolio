@@ -188,7 +188,7 @@ export default function Home() {
         backend reliability.
       </motion.p>
 
-      <div className="relative z-10 mb-24">
+      <div className="relative z-10 mt-16 mb-24">
         <p
           className="text-left pl-5 sm:pl-8 lg:pl-16 text-5xl text-black mb-4"
           style={{ fontFamily: "Michroma" }}
