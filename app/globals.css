@@ -31,6 +31,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-grid-line: var(--grid-line);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -55,12 +56,6 @@ body {
   font-family: "Michroma", Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   background: #ffffff;
-}
-
-main {
-  min-height: 100vh;
-  background: #ffffff;
-  background-image: none;
 }
 
 .page-grid {

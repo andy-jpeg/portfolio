@@ -7,6 +7,42 @@ import { useLenis } from "lenis/react";
 import ScrollingText from "@/components/home/ScrollingText";
 import { RepeatingDivider } from "@/components/home/RepeatingDivider";
 import { SectionHeader } from "@/components/home/SectionHeader";
+import { ExperienceTimeline } from "@/components/home/ExperienceTimeline";
+import { ProjectsTimeline } from "@/components/home/ProjectsTimeline";
+
+const TITLE_TEXT = "andy!";
+
+// Stagger the letters slightly after mount so the title leads the reveal.
+const titleContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.045, delayChildren: 0.1 },
+  },
+};
+
+// Each letter sits below its own clipped box, then pulls up into place.
+const letterVariants = {
+  hidden: { y: "1.1em" },
+  visible: {
+    y: "0em",
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+// The description fades/moves up as a single block, starting once the
+// title's letters have mostly finished pulling in.
+const descriptionVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      delay: 0.5,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
 
 export default function Home() {
   // No duration/easing passed here on purpose: Lenis falls back to the
@@ -21,10 +57,10 @@ export default function Home() {
       className="relative overflow-x-visible bg-white  px-5 sm:px-8 lg:px-16"
       aria-label="Home"
     >
-      <div className="absolute inset-0 bg-white" aria-hidden="true" />
+      <div className="fixed inset-0 bg-white" aria-hidden="true" />
       <motion.div
         aria-hidden="true"
-        className="absolute inset-[-20%]"
+        className="fixed inset-[-20%]"
         style={{
           backgroundColor: "#ffffff",
           backgroundImage:
@@ -46,12 +82,34 @@ export default function Home() {
         <div className="relative mx-auto flex min-h-screen w-full max-w-none">
           <div className="relative z-10 flex flex-col items-start gap-2 justify-center py-16">
             <p className="text-3xl tracking-tight text-black">hi, i&apos;m</p>
-            <p className="-mt-3 mb-2 text-7xl tracking-tight text-black">
-              andy!
-            </p>
-            <p
+            <motion.p
+              className="-mt-3 mb-2 text-7xl tracking-tight text-black"
+              aria-label={TITLE_TEXT}
+              variants={titleContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {TITLE_TEXT.split("").map((char, index) => (
+                <span
+                  key={index}
+                  className="inline-block overflow-hidden align-bottom pb-[0.3em] -mb-[0.3em]"
+                  aria-hidden="true"
+                >
+                  <motion.span
+                    className="inline-block"
+                    variants={letterVariants}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                </span>
+              ))}
+            </motion.p>
+            <motion.p
               className="text-3xl tracking-tight text-black"
               style={{ fontFamily: "Anonymous Pro" }}
+              variants={descriptionVariants}
+              initial="hidden"
+              animate="visible"
             >
               an aspiring software engineer
               <br />
@@ -59,7 +117,7 @@ export default function Home() {
               <br />
               game design, cloud, & product{" "}
               <span style={{ fontFamily: "sans-serif" }}>☺</span>
-            </p>
+            </motion.p>
           </div>
 
           <div className="pointer-events-none absolute right-[-5rem] top-1/2 z-0 h-[420px] w-[100vw] -translate-y-1/2 md:h-[500px]">
@@ -113,15 +171,19 @@ export default function Home() {
         />
       </div>
 
-      <p
+      <motion.p
         className="relative z-10 text-right pr-5 sm:pr-8 lg:pr-16 text-2xl text-black my-4 max-w-2xl ml-auto"
         style={{ fontFamily: "Anonymous Pro" }}
+        variants={descriptionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
       >
         as you can tell, most of my technologies are primarily in{" "}
-        <span className="font-bold">full-stack development!</span>
-        <br />i enjoy building end-to-end solutions that combine frontend
-        elegance with strong backend reliability.
-      </p>
+        <span className="font-bold">full-stack development! </span>i enjoy
+        building end-to-end solutions that combine frontend elegance with
+        backend reliability.
+      </motion.p>
 
       <div className="relative z-10 mb-24">
         <p
@@ -132,7 +194,7 @@ export default function Home() {
         </p>
         <ScrollingText
           texts={[
-            "Figma • Vercel • Render • PostgreSQL • MongoDB • Supabase • AWS • GitHub •",
+            "Figma • Vercel • Render • Docker • Kubernetes • PostgreSQL • MongoDB • Supabase • AWS • GitHub •",
           ]}
           velocity={20}
         />
@@ -140,23 +202,37 @@ export default function Home() {
 
       <RepeatingDivider />
 
-      <section className="relative z-10 mx-auto px-5 pr-[65%] w-full max-w-none py-16">
-        <SectionHeader
-          title="EXPERIENCE"
-          description="i have completed an industry-level internship & multiple engineer roles across student orgs!"
-        />
+      <section className="relative z-10 mx-auto w-full max-w-none px-5 mr-16 py-16">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-12">
+          <div className="md:w-[50%]">
+            <SectionHeader
+              title="EXPERIENCE"
+              description="i have completed an industry-level internship & multiple engineer roles across student orgs!"
+            />
+          </div>
+          <div className="md:w-[65%]">
+            <ExperienceTimeline />
+          </div>
+        </div>
       </section>
 
       <RepeatingDivider />
 
-      <section className="relative z-10 mx-auto px-5 pr-[65%] w-full max-w-none py-16">
-        <SectionHeader
-          title="PROJECTS"
-          description="a lot of my projects have been made through Roblox Studio, Next.js, & Godot!"
-        />
+      <section className="relative z-10 mx-auto w-full max-w-none px-5 mr-16 py-16">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-12">
+          <div className="md:w-[50%]">
+            <SectionHeader
+              title="PROJECTS"
+              description="a lot of my projects have been made through Roblox Studio, Next.js, & Godot!"
+            />
+          </div>
+          <div className="md:w-[65%]">
+            <ProjectsTimeline />
+          </div>
+        </div>
       </section>
 
-      <footer className="relative z-10 flex flex-col gap-3 pb-0 pt-4 text-xl text-black sm:flex-row sm:items-center sm:justify-between">
+      <footer className="relative z-10 flex flex-col gap-3 mb-12 pt-4 text-xl text-black sm:flex-row sm:items-center sm:justify-between">
         <p>made with ❤ by andy</p>
         <button
           type="button"
