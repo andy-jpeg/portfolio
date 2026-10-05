@@ -18,6 +18,12 @@ type ProjectEntry = {
 // most-recent-first.
 const PROJECTS: ProjectEntry[] = [
   {
+    title: "Stagehand",
+    description: "playable preview builds for every pull request, on a $0 cluster 🎭",
+    link: "/stagehand",
+    stack: "Go, Kubernetes, Docker, Terraform, Jenkins, Oracle Cloud",
+  },
+  {
     title: "Libre3D",
     description: "visual 3d element builder for creators 🎨",
     link: "https://emilyapel.com/projects/1785288163186",
@@ -79,6 +85,9 @@ export function ProjectsTimeline() {
       {PROJECTS.map((entry, index) => {
         const isLast = index === PROJECTS.length - 1;
         const hasLink = Boolean(entry.link && entry.link.trim() !== "");
+        // Pages on this site (like /stagehand) open in place; other sites
+        // open in a new tab.
+        const isExternal = Boolean(entry.link?.startsWith("http"));
 
         return (
           <motion.li
@@ -117,8 +126,9 @@ export function ProjectsTimeline() {
                   >
                     <a
                       href={entry.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      {...(isExternal
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                     >
                       Project Link
                     </a>

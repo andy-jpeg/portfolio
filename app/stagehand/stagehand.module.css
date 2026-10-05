@@ -1,0 +1,302 @@
+/* Stagehand project page. Carries over the Stagehand build-plan design:
+   Archivo with its width axis for headings, torn-tape tags, and an
+   inline SVG architecture diagram. Tokens live on .page because CSS
+   Modules can't target :root. Light-only, like the rest of the site. */
+
+.page {
+  --paper: #eef1f5;
+  --surface: #fbfcfd;
+  --ink: #141d33;
+  --muted: #556077;
+  --line: #c8d0db;
+  --code-bg: #e1e6ee;
+  --link: #2a51b5;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-archivo), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 72px 20px 96px;
+}
+
+.wrap p {
+  margin: 0 0 12px;
+}
+
+.wrap a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.wrap a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.wrap code,
+.stack code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.84em;
+  background: var(--code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+.kicker {
+  font-stretch: 80%;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.h1 {
+  font-stretch: 125%;
+  font-weight: 850;
+  font-size: clamp(2.5rem, 12vw, 5.75rem);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  margin: 0 0 18px;
+}
+
+.h2 {
+  font-stretch: 112%;
+  font-weight: 800;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 64px 0 12px;
+}
+
+.lede {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 34em;
+  margin-bottom: 28px !important;
+}
+
+/* Results as torn tape strips */
+.tapes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.tape {
+  --c: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 74px;
+  padding: 10px 14px 10px 12px;
+  background: var(--c);
+  color: #141d33;
+  clip-path: polygon(0 0, 100% 0, 97% 22%, 100% 46%, 96% 72%, 100% 100%, 0 100%, 3% 78%, 0 52%, 4% 26%);
+}
+
+.tape:nth-child(3n + 1) {
+  transform: rotate(-1.2deg);
+}
+
+.tape:nth-child(3n + 2) {
+  transform: rotate(0.8deg);
+}
+
+.tape:nth-child(3n) {
+  transform: rotate(-0.35deg);
+}
+
+.tapeValue {
+  font-stretch: 78%;
+  font-weight: 850;
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+
+.tapeLabel {
+  font-stretch: 85%;
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  margin-top: 3px;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stack code {
+  font-size: 0.8rem;
+  padding: 0.2em 0.5em;
+}
+
+/* Architecture diagram */
+.arch {
+  margin: 20px 0 16px;
+  overflow-x: auto;
+}
+
+.arch svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.dBox {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-width: 1.2;
+}
+
+.dChip {
+  fill: var(--code-bg);
+}
+
+.dT {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  fill: var(--ink);
+}
+
+.dS {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 11.5px;
+  fill: var(--muted);
+}
+
+.dM,
+.dMStrong {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  fill: var(--muted);
+}
+
+.dMStrong {
+  font-size: 11.5px;
+  fill: var(--ink);
+}
+
+.dLine {
+  stroke: var(--muted);
+  stroke-width: 1.4;
+  fill: none;
+}
+
+.dDash {
+  stroke: var(--muted);
+  stroke-width: 1.2;
+  fill: none;
+  stroke-dasharray: 4 4;
+}
+
+.dHead {
+  fill: var(--muted);
+}
+
+.journey {
+  list-style: decimal;
+  padding-left: 1.4em;
+  margin: 8px 0 0;
+}
+
+.journey li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+/* The pieces */
+.parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.part {
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.part p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.partTag {
+  --c: #ccc;
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 7px 13px 7px 11px;
+  background: var(--c);
+  color: #141d33;
+  font-stretch: 76%;
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1;
+  transform: rotate(-2deg);
+  clip-path: polygon(0 0, 100% 0, 95% 32%, 100% 58%, 96% 100%, 0 100%, 5% 70%, 0 38%);
+}
+
+.note {
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.note strong {
+  display: block;
+  font-stretch: 95%;
+  margin-bottom: 2px;
+}
+
+.note p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.closing {
+  margin-top: 64px !important;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding: 64px 16px 72px;
+  }
+
+  .tapes,
+  .parts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .parts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
