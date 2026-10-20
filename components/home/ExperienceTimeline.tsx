@@ -15,6 +15,11 @@ type ExperienceEntry = {
 // most-recent-first.
 const EXPERIENCE: ExperienceEntry[] = [
   {
+    title: "Product Management Intern",
+    company: "Develop for Good",
+    date: "Oct 2026 – Present",
+  },
+  {
     title: "Full-Stack Engineer",
     company: "The Agency | Student Org",
     date: "Aug 2026 – Present",
@@ -25,7 +30,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     date: "May 2026 – Aug 2026",
   },
   {
-    title: "Software Engineer",
+    title: "Frontend Engineer",
     company: "Society of Asian Scientists and Engineers | Student Org",
     date: "Sep 2025 – May 2026",
   },
@@ -82,11 +87,15 @@ export function ExperienceTimeline() {
             </div>
 
             <div className={isLast ? "flex-1 pb-2" : "flex-1 pb-10"}>
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-2xl tracking-tight text-black">
+              <div className="flex items-baseline justify-between gap-x-4">
+                <h3 className="min-w-0 truncate text-2xl tracking-tight text-black">
                   {entry.title}
                 </h3>
-                <Badge style={{ fontFamily: "Anonymous Pro" }} size="lg">
+                <Badge
+                  className="shrink-0"
+                  style={{ fontFamily: "Anonymous Pro" }}
+                  size="lg"
+                >
                   {entry.date}
                 </Badge>
               </div>

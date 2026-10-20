@@ -19,7 +19,8 @@ type ProjectEntry = {
 const PROJECTS: ProjectEntry[] = [
   {
     title: "Stagehand",
-    description: "playable preview builds for every pull request, on a $0 cluster 🎭",
+    description:
+      "playable preview builds for every pull request, on a $0 cluster 🎭",
     link: "/stagehand",
     stack: "Go, Kubernetes, Docker, Terraform, Jenkins, Oracle Cloud",
   },
@@ -42,16 +43,22 @@ const PROJECTS: ProjectEntry[] = [
     stack: "Godot, Cloudflare R2, GitHub Actions",
   },
   {
+    title: "Crowd Control",
+    description: "jackbox-style party survival game for web & roblox 📲",
+    link: "https://devpost.com/software/crowd-control-xci8fu",
+    stack: "Luau, Roblox Studio, Node.js, TypeScript, PostgreSQL, Auth0",
+  },
+  {
     title: "Streaks Across the Canvas",
     description: "multiplayer drawing game on Roblox (100k+ visits!) 🖍️",
     link: "https://www.roblox.com/games/6460041062/become-a-crayon",
-    stack: "Lua, Roblox Studio, MongoDB, HTTP/REST",
+    stack: "Luau, Roblox Studio, MongoDB, HTTP/REST",
   },
   {
     title: "The World Beyond Us",
     description: "immersive puzzle game about a lost robot 🤖",
     link: "https://github.com/andy-jpeg/osc_minihack25/",
-    stack: "Lua, Roblox Studio, HTTP/REST",
+    stack: "Luau, Roblox Studio, HTTP/REST",
   },
 ];
 
